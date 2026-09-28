@@ -4,7 +4,7 @@ Firmware para **ESP32-C3** que **exprime el núcleo al 100%** renderizando un fr
 
 Escrito en C sobre **ESP-IDF v6.1**.
 
-![target](https://img.shields.io/badge/target-ESP32--C3-red) ![framework](https://img.shields.io/badge/framework-ESP--IDF%20v6.1-blue)
+![target](https://img.shields.io/badge/target-ESP32--C3-red) ![framework](https://img.shields.io/badge/framework-ESP--IDF%20v6.1-blue) ![estado](https://img.shields.io/badge/estado-probado%20en%20hardware-brightgreen) ![lenguaje](https://img.shields.io/badge/lenguaje-C-555)
 
 ## Características
 - **Carga de CPU al 100%** a 160 MHz con compilación en `-O2` (fractal en punto fijo, sin FPU).
@@ -31,6 +31,16 @@ idf.py -p COMx flash monitor
 
 ## Detalle técnico
 El sensor de temperatura del C3 exige un **rango predefinido** que contenga el intervalo pedido; se usa `TEMPERATURE_SENSOR_CONFIG_DEFAULT(20, 100)`. Un rango que no calce en uno predefinido aborta el arranque.
+
+## Probado en hardware
+Funcionando en un **ESP32-C3 SuperMini** con OLED SSD1306 de 0,91":
+- el núcleo queda al **100 %** de forma sostenida y el watchdog no salta;
+- la barra muestra la temperatura interna actual y la máxima, más los FPS del fractal;
+- el sensor arranca con el rango `20–100 °C` (el `-10–110` aborta: está documentado arriba).
+
+## Autor
+Desarrollado por **Francisco Aldunate** — firmware para ESP32 (P4, S3 y C3) en C con ESP-IDF, el framework oficial de Espressif.
+Portafolio: [franciscoaldunate.cl](https://franciscoaldunate.cl) · GitHub: [@franciscoaldun](https://github.com/franciscoaldun)
 
 ## Licencia
 MIT — ver [LICENSE](LICENSE).
